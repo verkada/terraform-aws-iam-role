@@ -5,8 +5,9 @@ provider "null" {
 # Work around to throws an exception. 
 # It throws exception when the provided path does not begin and end with a forward slash.
 resource "null_resource" "is_path_valid" {
-  count                                     = "${substr(var.role_path, 0, 10) != "/external/" ? 1 : 0}"
-  "Path names must begin with '/external/'" = "true"
+  count = "${substr(var.role_path, 0, 10) != "/external/" ? 1 : 0}"
+  # "Path names must begin with '/external/'" = "true"
+  apply = "true"
 }
 
 # Trust relationships policy document
