@@ -8,7 +8,7 @@ module "this" {
   source = "../../modules/user"
 
   role_name                  = "SuperAdmin"
-  role_path                  = "/mgmt/"                                   # mgmt stands for management. They have access to manage all resources within the account.
+  role_path                  = "/mgmt/" # mgmt stands for management. They have access to manage all resources within the account.
   role_description           = "Role for Users with Administrator Access"
   role_force_detach_policies = true
   role_max_session_duration  = 43200
@@ -17,12 +17,12 @@ module "this" {
     "arn:aws:iam::123456789012:user/rafi.putra", # In actual use case, you have to replace this line with correct IAM User ARN.
   ]
 
-  mfa_required   = true        # Set this value to false only when needed
+  mfa_required   = true # Set this value to false only when needed
   product_domain = "txt"
   environment    = "prodution"
 }
 
 resource "aws_iam_role_policy_attachment" "this" {
-  role       = "${module.this.role_name}"
+  role       = module.this.role_name
   policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
 }

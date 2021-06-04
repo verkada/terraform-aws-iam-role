@@ -1,11 +1,11 @@
 variable "service_name" {
   description = "The name of the service that going to assume this role."
-  type        = "string"
+  type        = string
 }
 
 variable "cluster_role" {
   description = "The role of the cluster that going to assume this role."
-  type        = "string"
+  type        = string
 }
 
 variable "role_force_detach_policies" {
@@ -20,16 +20,16 @@ variable "role_max_session_duration" {
 
 variable "product_domain" {
   description = "Abbreviation of the product domain the created resources belong to"
-  type        = "string"
+  type        = string
 }
 
 variable "environment" {
-  type        = "string"
+  type        = string
   description = "Will be used in Environment tag"
 }
 
 variable "role_tags" {
   description = "Additional tags to be put on iam role"
-  type        = "map"
+  type        = map(string)
   default     = {}
 }

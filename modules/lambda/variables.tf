@@ -1,17 +1,17 @@
 variable "product_domain" {
   description = "Abbreviation of product domain these resources belong to."
-  type        = "string"
+  type        = string
 }
 
 variable "service_name" {
   description = "The name of the service that going to assume this role."
-  type        = "string"
+  type        = string
   default     = ""
 }
 
 variable "descriptive_name" {
   description = "Brief description of Lambda Function. It will be added to the role name. Example value: 'Periodic Scheduler'"
-  type        = "string"
+  type        = string
 }
 
 variable "role_force_detach_policies" {
@@ -30,12 +30,12 @@ variable "lambda_type" {
 }
 
 variable "environment" {
-  type        = "string"
+  type        = string
   description = "Will be used in Environment tag"
 }
 
 variable "role_tags" {
   description = "Additional tags to be put on iam role"
-  type        = "map"
+  type        = map(string)
   default     = {}
 }
