@@ -11,7 +11,7 @@ resource "aws_iam_role" "this" {
   force_detach_policies = "${var.role_force_detach_policies}"
   max_session_duration  = "${var.role_max_session_duration}"
 
-  tags = "${merge(var.role_tags, map(
+  tags = "${merge(var.role_tags, tomap(
     "Name", var.role_name,
     "Environment", var.environment,
     "ProductDomain", var.product_domain,
