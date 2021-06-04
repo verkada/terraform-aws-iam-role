@@ -1,11 +1,7 @@
-provider "null" {
-  version = ">= 1.0.0, < 3.0.0"
-}
-
-# Work around to throws an exception. 
+# Work around to throws an exception.
 # It throws exception when the provided path does not begin and end with a forward slash.
 resource "null_resource" "is_path_valid" {
-  count = "${substr(var.role_path, 0, 10) != "/external/" ? 1 : 0}"
+  count = substr(var.role_path, 0, 10) != "/external/" ? 1 : 0
   # "Path names must begin with '/external/'" = "true"
 }
 
@@ -33,15 +29,15 @@ data "aws_iam_policy_document" "doc" {
 module "this" {
   source = "../../"
 
-  role_name        = "${var.role_name}"
-  role_path        = "${var.role_path}"
-  role_description = "${var.role_description}"
-  role_tags        = "${var.role_tags}"
+  role_name        = var.role_name
+  role_path        = var.role_path
+  role_description = var.role_description
+  role_tags        = var.role_tags
 
-  role_assume_policy         = "${data.aws_iam_policy_document.doc.json}"
-  role_force_detach_policies = "${var.role_force_detach_policies}"
-  role_max_session_duration  = "${var.role_max_session_duration}"
+  role_assume_policy         = data.aws_iam_policy_document.doc.json
+  role_force_detach_policies = var.role_force_detach_policies
+  role_max_session_duration  = var.role_max_session_duration
 
-  product_domain = "${var.product_domain}"
-  environment    = "${var.environment}"
+  product_domain = var.product_domain
+  environment    = var.environment
 }
