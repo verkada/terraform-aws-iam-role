@@ -20,7 +20,7 @@ data "aws_iam_policy_document" "doc" {
       test     = "StringEquals"
       variable = "sts:ExternalId"
 
-      values = ["${var.external_id}"]
+      values = var.external_id != null ? ["${var.external_id}"] : var.external_ids
     }
   }
 }
