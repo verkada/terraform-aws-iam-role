@@ -28,6 +28,13 @@ variable "account_id" {
 variable "external_id" {
   description = "External ID provided by third party."
   type        = string
+  default     = null
+}
+
+variable "external_ids" {
+  description = "External IDs provided by third party."
+  type        = list(string)
+  default     = []
 }
 
 variable "role_max_session_duration" {
